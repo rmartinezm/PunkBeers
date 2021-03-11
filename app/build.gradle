@@ -45,6 +45,8 @@ dependencies {
     implementation AndroidX.constraintLayout
     // DESIGN
     implementation Material.material
+    // MODULE
+    implementation project(path: Core.clean)
     // TESTING
     testImplementation Junit.junit
     androidTestImplementation AndroidXTesting.junit
