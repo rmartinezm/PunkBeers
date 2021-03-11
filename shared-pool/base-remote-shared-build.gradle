@@ -1,0 +1,6 @@
+dependencies {
+    implementation Retrofit.retrofit
+    implementation Moshi.kotlin
+    implementation Moshi.codegen
+    implementation project(path: SharedPool.httpClient)
+}

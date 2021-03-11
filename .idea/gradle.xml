@@ -15,6 +15,9 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/clean" />
+            <option value="$PROJECT_DIR$/shared-pool" />
+            <option value="$PROJECT_DIR$/shared-pool/httpclient" />
+            <option value="$PROJECT_DIR$/shared-pool/network" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -6,6 +6,8 @@ include ':app'
 include ':core:clean'
 
 /* SHARED: POOL */
+include ':shared-pool:httpclient'
+include ':shared-pool:network'
 
 /* SHARED */
 

@@ -34,6 +34,11 @@ android {
         jvmTarget = '1.8'
     }
 
+    packagingOptions {
+        exclude 'META-INF/metadata.kotlin_module'
+        exclude 'META-INF/metadata.jvm.kotlin_module'
+    }
+
 }
 
 dependencies {
@@ -43,10 +48,14 @@ dependencies {
     implementation AndroidX.core
     implementation AndroidX.appCompat
     implementation AndroidX.constraintLayout
+    // DI
+    implementation Koin.androidViewModel
     // DESIGN
     implementation Material.material
     // MODULE
     implementation project(path: Core.clean)
+    implementation project(path: SharedPool.httpClient)
+    implementation project(path: SharedPool.network)
     // TESTING
     testImplementation Junit.junit
     androidTestImplementation AndroidXTesting.junit
