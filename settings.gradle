@@ -1,2 +1,14 @@
-include ':app'
+/* PROJECT */
 rootProject.name = "Punk Beers"
+include ':app'
+
+/* CORE */
+include ':core:clean'
+
+/* SHARED: POOL */
+
+/* SHARED */
+
+/* FEATURE: POOL */
+
+/* FEATURE */
