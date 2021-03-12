@@ -16,6 +16,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_BASE_URL", '"https://api.punkapi.com/v2/"'
     }
 
     buildTypes {
@@ -44,6 +46,8 @@ android {
 dependencies {
     //noinspection GradleDependency
     implementation Kotlin.standardLibrary
+    api Coroutines.core
+    api Coroutines.android
     // ANDROID X
     implementation AndroidX.core
     implementation AndroidX.appCompat
@@ -56,6 +60,7 @@ dependencies {
     implementation project(path: Core.clean)
     implementation project(path: SharedPool.httpClient)
     implementation project(path: SharedPool.network)
+    implementation project(path: Shared.beer)
     // TESTING
     testImplementation Junit.junit
     androidTestImplementation AndroidXTesting.junit

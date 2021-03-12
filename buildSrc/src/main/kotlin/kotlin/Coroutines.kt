@@ -12,4 +12,7 @@ object Coroutines {
     /* */
     const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
 
+    /* */
+    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutines}"
+
 }

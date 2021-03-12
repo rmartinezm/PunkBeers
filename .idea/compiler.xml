@@ -6,6 +6,7 @@
       <module name="Punk_Beers.buildSrc" target="1.8" />
       <module name="Punk_Beers.shared-pool.httpclient" target="1.8" />
       <module name="Punk_Beers.shared-pool.network" target="1.8" />
+      <module name="Punk_Beers.shared.beer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
