@@ -14,7 +14,6 @@ class RetrofitBuilder(
     /* */
     private val timeOut: Long = 100L
 
-
     /** */
     fun build(): Retrofit {
         val baseUrl = retrofitUrlProvider.getBaseUrl()
