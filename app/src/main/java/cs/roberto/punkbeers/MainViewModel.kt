@@ -2,9 +2,10 @@ package cs.roberto.punkbeers
 
 import androidx.lifecycle.ViewModel
 import cs.roberto.shared.beer.presentation.get_beer_details.GetBeerDetails
+import cs.roberto.shared.beer.presentation.get_beers.GetBeers
 
 /** */
 class MainViewModel(
-    getBeerDetails: GetBeerDetails
+    getBeers: GetBeers
 ) : ViewModel(),
-    GetBeerDetails by getBeerDetails
+    GetBeers by getBeers

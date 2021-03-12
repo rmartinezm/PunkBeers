@@ -2,6 +2,7 @@ package cs.roberto.shared.beer.data.data_source.remote.model.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import cs.roberto.shared.beer.domain.entity.Beer
 import cs.roberto.shared.beer.domain.entity.BeerDetails
 
 /** */
@@ -15,6 +16,10 @@ internal data class BeerDetailsDto(
     @Json(name = "first_brewed") val firstBrewedDate: String,
     @Json(name = "food_pairing") val foodParing: List<String>,
 ) {
+
+    /** */
+    fun toBeer(): Beer =
+        Beer(id, name, imageUrl, tagLine)
 
     /** */
     fun toBeerDetails(): BeerDetails =
