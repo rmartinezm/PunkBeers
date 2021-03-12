@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainViewModel.getBeerDetailsAsLiveData(1).observe(this) {
+        mainViewModel.getBeersAsLiveData(1).observe(this) {
             Log.e("GET_BEER", it.toString())
             if (it is Status.Done)
-                findViewById<TextView>(R.id.tv_label).text = it.value.beerDetails.toString()
+                findViewById<TextView>(R.id.tv_label).text = it.value.beers.toString()
         }
     }
 
