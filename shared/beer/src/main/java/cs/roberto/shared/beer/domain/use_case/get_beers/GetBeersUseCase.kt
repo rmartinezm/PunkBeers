@@ -11,5 +11,5 @@ class GetBeersUseCase(
 
     /** */
     override suspend fun run(params: GetBeersParams): Either<GetBeersFailure, GetBeersResponse> =
-        beerRepository.getBeers(params.page)
+        beerRepository.getBeers(params.page, params.pageSize)
 }

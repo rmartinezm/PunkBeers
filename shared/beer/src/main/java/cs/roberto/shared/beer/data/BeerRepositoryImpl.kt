@@ -24,8 +24,8 @@ internal class BeerRepositoryImpl(
         get() = if (isOnline) beerDataSourceRemote else beerDataSourceLocal
 
     /** */
-    override suspend fun getBeers(page: Int): Either<GetBeersFailure, GetBeersResponse> =
-        beerDataSource.getBeers(page)
+    override suspend fun getBeers(page: Int, pageSize: Int): Either<GetBeersFailure, GetBeersResponse> =
+        beerDataSource.getBeers(page, pageSize)
             .onRight { beerDataSourceLocal.saveBeers(it.beers) }
 
     /** */

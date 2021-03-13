@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -27,6 +29,10 @@ android {
         }
     }
 
+    buildFeatures {
+        dataBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -44,18 +50,30 @@ android {
 }
 
 dependencies {
+    //KOTLIN
     //noinspection GradleDependency
     implementation Kotlin.standardLibrary
+    //KOTLIN: Coroutines
     api Coroutines.core
     api Coroutines.android
     // ANDROID X
     implementation AndroidX.core
     implementation AndroidX.appCompat
+    implementation AndroidX.legacy
     implementation AndroidX.constraintLayout
+    // ANDROID X: Navigation
+    implementation AndroidXNavigation.fragmentKtx
+    implementation AndroidXNavigation.uiKtx
+    // JETPACK
+    implementation Paging.runtime
     // DI
     implementation Koin.androidViewModel
     // DESIGN
+    // DESIGN: Material
     implementation Material.material
+    // DESIGN: Glide
+    implementation Glide.glide
+    annotationProcessor Glide.compiler
     // MODULE
     implementation project(path: Core.clean)
     implementation project(path: SharedPool.httpClient)

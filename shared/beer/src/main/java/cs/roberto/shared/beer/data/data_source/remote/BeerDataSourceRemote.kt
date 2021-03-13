@@ -7,7 +7,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import cs.roberto.core.clean.Either
 import cs.roberto.shared.beer.data.BeerDataSource
 import cs.roberto.shared.beer.data.data_source.remote.model.dto.BeerDetailsDto
-import cs.roberto.shared.beer.domain.entity.Beer
 import cs.roberto.shared.beer.domain.entity.BeerDetails
 import cs.roberto.shared.beer.domain.use_case.get_beer_details.GetBeerDetailsFailure
 import cs.roberto.shared.beer.domain.use_case.get_beer_details.GetBeerDetailsResponse
@@ -21,9 +20,12 @@ internal class BeerDataSourceRemote(
 ) : BeerDataSource {
 
     /** */
-    override suspend fun getBeers(page: Int): Either<GetBeersFailure, GetBeersResponse> =
+    override suspend fun getBeers(
+        page: Int,
+        pageSize: Int
+    ): Either<GetBeersFailure, GetBeersResponse> =
         try {
-            retrofitApiCall { beerApiService.getBeers(page) }.let {
+            retrofitApiCall { beerApiService.getBeers(page, pageSize) }.let {
                 val beersDetailsDto = it.asBeersDetailsDto()
                 val beers = beersDetailsDto.map { dto -> dto.toBeer() }
                 val response = GetBeersResponse(beers)
