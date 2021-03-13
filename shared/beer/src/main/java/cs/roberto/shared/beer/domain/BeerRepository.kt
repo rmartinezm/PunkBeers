@@ -10,7 +10,10 @@ import cs.roberto.shared.beer.domain.use_case.get_beers.GetBeersResponse
 interface BeerRepository {
 
     /** */
-    suspend fun getBeers(page: Int): Either<GetBeersFailure, GetBeersResponse>
+    suspend fun getBeers(
+        page: Int,
+        pageSize: Int
+    ): Either<GetBeersFailure, GetBeersResponse>
 
     /** */
     suspend fun getBeerDetails(

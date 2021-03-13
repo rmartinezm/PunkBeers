@@ -14,8 +14,11 @@ import cs.roberto.shared.beer.domain.use_case.get_beers.GetBeersResponse
 internal class BeerDataSourceLocal : BeerDataSource {
 
     /** */
-    override suspend fun getBeers(page: Int): Either<GetBeersFailure, GetBeersResponse> {
-        TODO("Not yet implemented")
+    override suspend fun getBeers(
+        page: Int,
+        pageSize: Int
+    ): Either<GetBeersFailure, GetBeersResponse> {
+        return Either.Right(GetBeersResponse(listOf()))
     }
 
     /** */

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_main.xml"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="cs.roberto.punkbeers.presentation.feature.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_masterViewFragment"
+            app:destination="@id/masterViewFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/masterViewFragment"
+        android:name="cs.roberto.punkbeers.presentation.feature.master_view.MasterViewFragment"
+        tools:layout="@layout/fragment_master_view">
+        <action
+            android:id="@+id/action_masterViewFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="cs.roberto.punkbeers.presentation.feature.detail_view.DetailFragment"
+        tools:layout="@layout/fragment_detail" />
+
+</navigation>

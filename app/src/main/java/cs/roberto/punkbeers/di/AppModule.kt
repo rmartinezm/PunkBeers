@@ -1,12 +1,9 @@
 package cs.roberto.punkbeers.di
 
-import cs.roberto.punkbeers.MainViewModel
 import cs.roberto.punkbeers.PunkBeersApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 
 /**
  * Initialize the Koin instance with the modules associated to the project.
@@ -15,7 +12,7 @@ fun PunkBeersApplication.initKoin() {
     val sharedModules = getSharedPoolModules() + getSharedModules()
     val featureModules = getFeaturePoolModules() + getFeatureModules()
     val dataModules = getDataModules()
-    val modules = sharedModules + featureModules + dataModules + module { viewModel { MainViewModel(get()) } }
+    val modules = sharedModules + featureModules + dataModules
     startKoin{
         androidLogger()
         androidContext(this@initKoin)
