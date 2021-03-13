@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cs.roberto.core.clean.Status
 import cs.roberto.punkbeers.databinding.FragmentMasterViewBinding
@@ -72,7 +73,9 @@ class MasterViewFragment : Fragment() {
 
     /** */
     private fun onBeerActionClickListener(beer: Beer) {
-        Toast.makeText(requireContext(), beer.name, Toast.LENGTH_SHORT).show()
+        val direction = MasterViewFragmentDirections
+            .actionMasterViewFragmentToDetailFragment(beer.id)
+        findNavController().navigate(direction)
     }
 
 }
