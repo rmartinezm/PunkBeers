@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Punk Beers</string>
+    <string name="network_connection_failure">Internet connection required, try again</string>
 </resources>

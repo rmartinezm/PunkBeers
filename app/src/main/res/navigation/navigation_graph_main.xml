@@ -28,6 +28,10 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="cs.roberto.punkbeers.presentation.feature.detail_view.DetailFragment"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="beerId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
