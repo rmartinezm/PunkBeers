@@ -24,10 +24,7 @@ internal class BeerDataSourceLocal(
         page: Int,
         pageSize: Int
     ): Either<GetBeersFailure, GetBeersResponse> {
-        val tableSize = beerDao.getTableSize()
-        val beers = if (tableSize >= page * pageSize)
-            beerDao.getBeers(page.dec(), pageSize).map(BeerEntity::toBeer)
-        else emptyList()
+        val beers = beerDao.getBeers(page.dec(), pageSize).map(BeerEntity::toBeer)
         val response = GetBeersResponse(beers)
         return Either.Right(response)
     }

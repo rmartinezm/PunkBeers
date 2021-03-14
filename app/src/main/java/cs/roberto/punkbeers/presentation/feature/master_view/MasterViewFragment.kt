@@ -74,7 +74,7 @@ class MasterViewFragment : Fragment() {
     /** */
     private fun onBeerActionClickListener(beer: Beer) {
         val direction = MasterViewFragmentDirections
-            .actionMasterViewFragmentToDetailActivity(beer.id)
+            .actionMasterViewFragmentToDetailFragment(beer.id)
         findNavController().navigate(direction)
     }
 

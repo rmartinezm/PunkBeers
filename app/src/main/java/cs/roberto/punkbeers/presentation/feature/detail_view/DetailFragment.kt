@@ -1,15 +1,18 @@
 package cs.roberto.punkbeers.presentation.feature.detail_view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.navArgs
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import cs.roberto.core.clean.Failure
 import cs.roberto.core.clean.Status
 import cs.roberto.punkbeers.R
-import cs.roberto.punkbeers.databinding.ActivityDetailBinding
+import cs.roberto.punkbeers.databinding.FragmentDetailBinding
 import cs.roberto.shared.beer.domain.entity.BeerDetails
 import cs.roberto.shared.beer.domain.use_case.get_beer_details.GetBeerDetailsFailure
 import cs.roberto.shared.beer.presentation.get_beer_details.GetBeerDetailsStatus
@@ -17,25 +20,31 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 /** */
-class DetailActivity : AppCompatActivity() {
+class DetailFragment : Fragment() {
 
     /* */
-    private val binding: ActivityDetailBinding
-            by lazy { ActivityDetailBinding.inflate(layoutInflater) }
+    private val binding: FragmentDetailBinding
+            by lazy { FragmentDetailBinding.inflate(layoutInflater) }
 
     /* */
-    private val args: DetailActivityArgs by navArgs()
+    private val args: DetailFragmentArgs by navArgs()
 
     /* */
     private val detailViewModel: DetailViewModel by viewModel { parametersOf(args.beerId) }
 
     /** */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = binding.root
+
+    /** */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupViews()
         execute()
     }
+
     /** */
     private fun setupViews() {
         setupToolbar()
@@ -49,7 +58,7 @@ class DetailActivity : AppCompatActivity() {
     /** */
     private fun execute() {
         detailViewModel.getBeerDetailsAsLiveData()
-            .observe(this, createGetBeerDetailsStatusObserver())
+            .observe(viewLifecycleOwner, createGetBeerDetailsStatusObserver())
     }
 
     /** */
@@ -64,28 +73,12 @@ class DetailActivity : AppCompatActivity() {
     /** */
     private fun manageGetBeerDetailsFailure(failure: GetBeerDetailsFailure) {
         hideProgressBar()
-        val titleRes: Int
-        val contentRes: Int
-        when (failure) {
-            is GetBeerDetailsFailure.DetailFailure -> {
-                titleRes = R.string.detail_failure_title
-                contentRes = R.string.detail_failure_content
-            }
-            GetBeerDetailsFailure.NetworkConnectionFailure -> {
-                titleRes = R.string.network_connection_failure_title
-                contentRes = R.string.network_connection_failure_content
-            }
+        val message: String = when (failure) {
+            GetBeerDetailsFailure.NetworkConnectionFailure ->
+                getString(R.string.network_connection_failure)
+            is GetBeerDetailsFailure.DetailFailure -> failure.detail
         }
-         MaterialAlertDialogBuilder(this)
-             .setTitle(titleRes)
-             .setMessage(contentRes)
-             .setPositiveButton(R.string.detail_failure_action) { dialog, _ ->
-                 dialog.dismiss()
-                 finish()
-             }
-             .setCancelable(false)
-             .create()
-             .show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
     /** */
@@ -102,6 +95,11 @@ class DetailActivity : AppCompatActivity() {
     /** */
     private fun hideProgressBar() {
         binding.pbLoader.visibility = View.GONE
+    }
+
+    /** */
+    private fun onBackPressed() {
+        findNavController().navigateUp()
     }
 
 }

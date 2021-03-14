@@ -1,8 +1,4 @@
 <resources>
     <string name="app_name">Punk Beers</string>
-    <string name="network_connection_failure_title">Internet connection required</string>
-    <string name="network_connection_failure_content">Please connect to a stable network and try again</string>
-    <string name="detail_failure_title">Ups!</string>
-    <string name="detail_failure_content">We have some issues, please try again</string>
-    <string name="detail_failure_action">OK</string>
+    <string name="network_connection_failure">Internet connection required, try again</string>
 </resources>

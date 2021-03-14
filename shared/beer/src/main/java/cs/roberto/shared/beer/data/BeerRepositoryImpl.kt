@@ -27,11 +27,8 @@ internal class BeerRepositoryImpl(
         pageSize: Int
     ): Either<GetBeersFailure, GetBeersResponse> {
         if (isOnline) {
-            val remoteResponse = beerDataSourceRemote.getBeers(page, pageSize)
+            beerDataSourceRemote.getBeers(page, pageSize)
                 .onRight { beerDataSourceLocal.saveBeers(it.beers) }
-            if (remoteResponse.isRight)
-                if (remoteResponse.rightValue().beers.isEmpty())
-                    return remoteResponse
         }
         return beerDataSourceLocal.getBeers(page, pageSize)
     }

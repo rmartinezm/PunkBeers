@@ -21,17 +21,17 @@
         android:name="cs.roberto.punkbeers.presentation.feature.master_view.MasterViewFragment"
         tools:layout="@layout/fragment_master_view">
         <action
-            android:id="@+id/action_masterViewFragment_to_detailActivity"
-            app:destination="@id/detailActivity" />
+            android:id="@+id/action_masterViewFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
-    <activity
-        android:id="@+id/detailActivity"
-        android:name="cs.roberto.punkbeers.presentation.feature.detail_view.DetailActivity"
-        tools:layout="@layout/activity_detail">
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="cs.roberto.punkbeers.presentation.feature.detail_view.DetailFragment"
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="beerId"
             app:argType="integer" />
-    </activity>
+    </fragment>
 
 </navigation>

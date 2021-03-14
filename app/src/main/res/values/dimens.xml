@@ -12,11 +12,8 @@
     <dimen name="half_vertical_margin">14dp</dimen>
     <dimen name="vertical_margin">28dp</dimen>
     <dimen name="double_vertical_margin">56dp</dimen>
-    <dimen name="beer_image_width">80dp</dimen>
-    <dimen name="beer_image_height">160dp</dimen>
+    <dimen name="view_holder_beer_image_width">80dp</dimen>
+    <dimen name="view_holder_beer_image_height">160dp</dimen>
     <dimen name="splash_logo_size">220dp</dimen>
-
-    <!-- WIDGETS -->
-    <dimen name="text_view_title_size">18sp</dimen>
 
 </resources>
