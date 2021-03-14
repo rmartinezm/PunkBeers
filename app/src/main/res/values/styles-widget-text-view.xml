@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.PunkBeers.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.PunkBeers.TextView</item>
+    </style>
+
+    <style name="TextAppearance.PunkBeers.TextView" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Theme.PunkBeers.TextView.Title">
+        <item name="android:textAppearance">@style/TextAppearance.PunkBeers.TextView.Title</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontWeight" tools:targetApi="o">400</item>
+    </style>
+
+    <style name="TextAppearance.PunkBeers.TextView.Title">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/text_view_title_size</item>
+    </style>
+
+    <style name="Theme.PunkBeers.TextView.Content">
+        <item name="android:textAppearance">@style/TextAppearance.PunkBeers.TextView.Content</item>
+    </style>
+
+    <style name="TextAppearance.PunkBeers.TextView.Content">
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Theme.PunkBeers.TextView.Content.OnPrimary">
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+
+</resources>
