@@ -10,9 +10,6 @@ import cs.roberto.shared.beer.data.data_source.local.model.entity.BeerEntity
 @Dao
 interface BeerDao {
 
-    @Query("SELECT COUNT(id) FROM beer")
-    suspend fun getTableSize(): Int
-
     @Query("SELECT * FROM beer LIMIT :perPage OFFSET :page")
     suspend fun getBeers(
         page: Int,

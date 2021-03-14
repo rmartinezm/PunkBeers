@@ -24,8 +24,8 @@
             <ImageView
                 android:id="@+id/iv_image"
                 bindImageUrl="@{ beer.imageUrl }"
-                android:layout_width="@dimen/beer_image_width"
-                android:layout_height="@dimen/beer_image_height"
+                android:layout_width="@dimen/view_holder_beer_image_width"
+                android:layout_height="@dimen/view_holder_beer_image_height"
                 android:layout_marginVertical="@dimen/small_vertical_margin"
                 android:layout_marginStart="@dimen/small_lateral_margin"
                 android:contentDescription="@null"
@@ -48,7 +48,6 @@
 
                 <TextView
                     android:id="@+id/tv_name"
-                    style="@style/Theme.PunkBeers.TextView.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{ beer.name }"
@@ -56,7 +55,6 @@
 
                 <TextView
                     android:id="@+id/tv_tag_line"
-                    style="@style/Theme.PunkBeers.TextView.Content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/small_vertical_margin"
