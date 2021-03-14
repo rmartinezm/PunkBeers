@@ -5,8 +5,10 @@ plugins {
 }
 
 dependencies {
+    implementation Paging.runtime
     implementation project(path: SharedPool.network)
 }
 
 apply from: "$rootDir/shared-pool/base-shared-build.gradle"
+apply from: "$rootDir/shared-pool/base-local-shared-build.gradle"
 apply from: "$rootDir/shared-pool/base-remote-shared-build.gradle"

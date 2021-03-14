@@ -1,6 +1,8 @@
 package cs.roberto.shared.beer.data
 
 import cs.roberto.core.clean.Either
+import cs.roberto.core.clean.flatMapSuspend
+import cs.roberto.core.clean.onLeft
 import cs.roberto.core.clean.onRight
 import cs.roberto.shared.beer.data.data_source.local.BeerDataSourceLocal
 import cs.roberto.shared.beer.data.data_source.remote.BeerDataSourceRemote
@@ -19,20 +21,27 @@ internal class BeerRepositoryImpl(
 ) : BeerRepository,
     NetworkConnectionRepository by networkConnectionRepository {
 
-    /* */
-    private val beerDataSource: BeerDataSource
-        get() = if (isOnline) beerDataSourceRemote else beerDataSourceLocal
-
     /** */
-    override suspend fun getBeers(page: Int, pageSize: Int): Either<GetBeersFailure, GetBeersResponse> =
-        beerDataSource.getBeers(page, pageSize)
-            .onRight { beerDataSourceLocal.saveBeers(it.beers) }
+    override suspend fun getBeers(
+        page: Int,
+        pageSize: Int
+    ): Either<GetBeersFailure, GetBeersResponse> {
+        if (isOnline) {
+            beerDataSourceRemote.getBeers(page, pageSize)
+                .onRight { beerDataSourceLocal.saveBeers(it.beers) }
+        }
+        return beerDataSourceLocal.getBeers(page, pageSize)
+    }
 
     /** */
     override suspend fun getBeerDetails(
         beerId: Int
-    ): Either<GetBeerDetailsFailure, GetBeerDetailsResponse> =
-        beerDataSource.getBeerDetails(beerId)
-            .onRight { beerDataSourceLocal.saveBeerDetails(it.beerDetails) }
+    ): Either<GetBeerDetailsFailure, GetBeerDetailsResponse> {
+        if (isOnline) {
+            beerDataSourceRemote.getBeerDetails(beerId)
+                .onRight { beerDataSourceLocal.saveBeerDetails(it.beerDetails) }
+        }
+        return beerDataSourceLocal.getBeerDetails(beerId)
+    }
 
 }
