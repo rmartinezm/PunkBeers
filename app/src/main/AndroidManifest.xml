@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PunkBeers"
         tools:ignore="AllowBackup">
+        <activity android:name=".presentation.feature.detail_view.DetailActivity"></activity>
         <activity
             android:name=".presentation.feature.MainActivity"
             android:screenOrientation="portrait">
